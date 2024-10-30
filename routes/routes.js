@@ -1,6 +1,6 @@
 import express from "express";
 const router= express.Router();
-
+import {signup} from "../controller/Usercontroller.js"
 //testing route
 router.get("/",(req,res)=>{
     return(
@@ -8,6 +8,8 @@ router.get("/",(req,res)=>{
     )
 })
 
+// user routes
+router.post("/signup",signup);
 
 
 export default router;
