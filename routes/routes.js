@@ -1,6 +1,6 @@
 import express from "express";
 const router= express.Router();
-import {signup} from "../controller/Usercontroller.js"
+import {signup,login,profile} from "../controller/Usercontroller.js"
 //testing route
 router.get("/",(req,res)=>{
     return(
@@ -10,6 +10,8 @@ router.get("/",(req,res)=>{
 
 // user routes
 router.post("/signup",signup);
+router.post("/login",login);
+router.get("/profile",profile);
 // this demo 
 
 export default router;
