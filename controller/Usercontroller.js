@@ -7,20 +7,27 @@ export const signup= async(req,res)=>{
         const {Fname,Email,Phone,Password}= req.body;
         let user = await UserModel.findOne({email:Email});
         if(user){
-            res.json({
-                success: false,
-                message: "user already exists"
-            })
+            return(
+                res.json({
+                    success: false,
+                    message: "user already exists"
+                })
+            )
         }
         else{
             const haspassword = await bcrypt.hash(Password,10);
-           user= await UserModel.create({
+             user= await UserModel.create({
                 name:Fname,
                 email:Email,
                 phone:Phone,
                 password:haspassword
             })
-            sendcookie(user,res,"user created successfully")
+            return(
+                res.json({
+                    success: true,
+                    message: "User Created successfully"
+                })
+            )
         }
     } catch (error) {
         return (
@@ -48,10 +55,12 @@ export const login = async(req,res)=>{
                 sendcookie(user,res,`welcome back ${user.name}`)
             }
             else{
-                res.json({
-                    success: false,
-                    message:"wrong password"
-                });
+                return(
+                    res.json({
+                        success: false,
+                        message:"wrong password"
+                    })
+                )
             }
         }
     } catch (error) {
