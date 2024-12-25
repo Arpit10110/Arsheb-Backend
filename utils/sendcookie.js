@@ -8,7 +8,8 @@ export const sendcookie = (user,res,messgae)=>{
             maxAge: 30 * 24 * 60 * 60 * 1000
         }).json({
             success: true,
-            messgae:messgae
+            messgae:messgae,
+            user:user
         })
     )
 
