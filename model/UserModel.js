@@ -1,4 +1,12 @@
 import mongoose from "mongoose";
+
+const AddressSchema = new mongoose.Schema({
+    value:{
+        type: 'string',
+    }
+})
+
+
 const Schema = new mongoose.Schema({
     name:{
         type:String,
@@ -16,6 +24,9 @@ const Schema = new mongoose.Schema({
         type:String,
         required:true
     },
+    address:{
+        type:[AddressSchema]
+    }
 })
 
 
