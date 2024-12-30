@@ -12,3 +12,22 @@ export const createorder = async (req, res) => {
         res.json({ success: false, message: error });
     }
 } 
+
+
+export const getorder = async(req,res)=>{
+    try {
+        const { userid} = req.body;
+
+        const orderdata = await OrderModel.find({ userid: userid}); 
+        return res.json({
+            success: true,
+            data:orderdata
+        })
+        
+    } catch (error) {
+        return res.json({
+            success:false,
+            error:error
+        })
+    }
+}

@@ -75,23 +75,15 @@ export const login = async(req,res)=>{
 
 export const profile = async(req, res) => {
     try {
-        const {token}= req.cookies;
-        if(!token){
-            return(
-                res.json({
-                    success: false,
-                    message:"login please"
-                })
-            )
-        }else{
-            const decoded = jwt.verify(token,process.env.JWT_SECRET)
-            console.log(decoded.id)
-            const userdata = await UserModel.findById(decoded.id)
-            res.json({
-                success: false,
+        
+        const {userid} = req.body;
+
+        const userdata =  await UserModel.findById(userid);
+      
+         return   res.json({
+                success: true,
                 user:userdata
             })
-        }
     } catch (error) {
         res.json({
             success: false,
