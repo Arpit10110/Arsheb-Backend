@@ -16,6 +16,7 @@ const Schema = new mongoose.Schema({
     shipping: { type: Number, required: true },
     total: { type: String, required: true },
     payment: { type: String, required: true },
+    orderdate:{type:String, required: true}
 })
 
 
