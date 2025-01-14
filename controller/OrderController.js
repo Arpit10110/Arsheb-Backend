@@ -3,7 +3,7 @@ import { OrderModel } from "../model/OrderModel.js";
 export const createorder = async (req, res) => {
     try {
         const { userid, cart, total, totalprice, shipping, address, payment,orderdate } = req.body;
-        const newOrder = new OrderModel({ userid, cart, total, totalprice, shipping, address, payment,orderdate
+        const newOrder = new OrderModel({ userid, cart, total, totalprice, shipping, address, payment,orderdate,status:"pending"
         });
         await newOrder.save();
         res.json({ success: true, message: "Order created successfully", });
