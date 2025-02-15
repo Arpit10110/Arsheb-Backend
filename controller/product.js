@@ -108,3 +108,24 @@ export const hairacces = async(req,res)=>{
         })
     }
 }
+
+
+export const productdetail = async(req,res)=>{
+    try {
+
+        const {id} = await req.body;
+ 
+        const pdeatils = await ProductModel.findById(id)
+
+        return res.json({
+            success:true,
+            data:pdeatils
+        })
+        
+    } catch (error) {
+        return res.json({
+            success: false,
+            message:error
+        })
+    }
+}
