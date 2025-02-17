@@ -21,7 +21,8 @@ const Schema = new mongoose.Schema({
     total: { type: String, required: true },
     payment: { type: String, required: true },
     orderdate:{type:String, required: true},
-    status:{ type: String, required: true}
+    status:{ type: String, required: true},
+    ordermessage : { type: String},
 })
 
 

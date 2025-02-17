@@ -5,7 +5,6 @@ export const createorder = async (req, res) => {
     try {
         const { userid, cart, total, totalprice, shipping, address, payment,orderdate } = req.body;
         const user = await UserModel.findById(userid);
-        console.log(user);
         const newOrder = new OrderModel({ user:{
             name: user.name,
             email:user.email,
@@ -25,7 +24,9 @@ export const getorder = async(req,res)=>{
     try {
         const { userid} = req.body;
 
-        const orderdata = await OrderModel.find({ userid: userid}); 
+        const user = await UserModel.findById(userid);
+        const orderdata = await OrderModel.find({ "user.email": user.email });
+
         return res.json({
             success: true,
             data:orderdata
